@@ -1,0 +1,100 @@
+body {
+	background: #222;
+	color: #999;
+}
+.clear {
+	clear: both;
+}
+.modal-dialog-view {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
+	background: rgba(0, 0, 0, .25);
+}
+.modal-dialog-view .dialog {
+	margin: 5em;
+	background: #333;
+	border-radius: 10px;
+	padding: 2em;
+}
+.modal-dialog-view button {
+	margin-left: 1em;
+}
+.card-backs {
+	transition: .25s -webkit-filter ease-out;
+	filter: blur(0);
+}
+.card-backs.is-modal-dialog-visible {
+	filter: blur(2px);
+}
+.card-backs.is-side-bar-visible .main-viewport {
+	left: 300px;
+}
+.card-backs.is-side-bar-visible .side-nav-bar {
+	left: 0;
+}
+.top-nav-bar {
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 45px;
+	background: #111;
+	padding: 5px;
+}
+.side-nav-bar {
+	position: fixed;
+	top: 45px;
+	bottom: 30px;
+	left: -300px;
+	width: 300px;
+	background: #333;
+	overflow: scroll;
+	padding: 1em;
+	transition: .25s all ease-out;
+}
+.main-viewport {
+	overflow: scroll;
+	position: fixed;
+	top: 45px;
+	left: 0;
+	right: 0;
+	bottom: 30px;
+	background: black;
+	padding: 1em;
+	transition: .25s all ease-out;
+}
+.footer-bar {
+	overflow: hidden;
+	padding: 5px;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	height: 30px;
+	background: #111;
+}
+.top-nav-bar .sidebar-icon {
+	transform: rotate(-90deg);
+}
+.main-viewport .stage {
+	display: inline-block;
+	border: 1px solid #999;
+}
+.input-group.composite-selector {
+    background: #eeeeee;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #CCC;
+}
+.input-group.composite-selector .input-group-addon {
+	border: 0;
+}
+.input-group.composite-selector input[type='range'] {
+	margin-top: 6px;
+	width: 95%;
+}

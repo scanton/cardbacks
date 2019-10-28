@@ -1,0 +1,29 @@
+{
+  "name": "cardbacks",
+  "version": "1.0.0",
+  "description": "Visual tool to design playing card backs.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scanton/cardbacks.git"
+  },
+  "keywords": [
+    "playing card",
+    "card back",
+    "design"
+  ],
+  "author": "Satori Canton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scanton/cardbacks/issues"
+  },
+  "homepage": "https://github.com/scanton/cardbacks#readme",
+  "dependencies": {
+    "electron-prebuilt": "^1.4.13",
+    "fs-extra": "^5.0.0"
+  }
+}
