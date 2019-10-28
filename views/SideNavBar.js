@@ -18,13 +18,13 @@
 				<div class="input-group-addon">
 					Background
 				</div>
-				<input @change="handleBackgroundChange" type="color" v-model="backgroundColor" />
+				<input type="color" v-model="backgroundColor" />
 			</div>
 			<div class="input-group composite-selector">
 				<div class="input-group-addon">
 					Foreground
 				</div>
-				<input @change="handleForegroundChange" type="color" v-model="foregroundColor" />
+				<input type="color" v-model="foregroundColor" />
 			</div>
 			<div class="input-group composite-selector">
 				<div class="input-group-addon">
@@ -90,12 +90,6 @@
 			return {}
 		},
 		methods: {
-			handleBackgroundChange: function(e) {
-				console.log(e.target.value);
-			},
-			handleForegroundChange: function(e) {
-				console.log(e.target.value);	
-			},
 			handleSaveSeed: function(e) {
 				console.log("save seed");
 			},
