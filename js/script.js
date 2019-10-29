@@ -48,10 +48,10 @@ const store = new Vuex.Store({
 			var s = `<?xml version="1.0" encoding="utf-8"?>
 			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" x="0px" y="0px" viewBox="0 0 ` + state.stageWidth + ` ` + state.stageHeight + `" enable-background="new 0 0 ` + state.stageWidth + ` ` + state.stageHeight + `" xml:space="preserve">
 			<g inkscape:groupmode="layer" inkscape:label="Layer 1">
-			<g><polygon fill="` + state.foregroundColor + '" points="';
+			<g><path fill="` + state.foregroundColor + '" d="';
 			var r, r2, sinSlice, cosSlice;
 			var pointArray = [];
-			var l = 1;//state.radiusArray.length;
+			var l = state.radiusArray.length - 1;
 			var l2 = state.totalPoints;
 			var sliceSize = toRadians(360 / l2);
 			var centerX = state.stageWidth / 2;
@@ -59,20 +59,22 @@ const store = new Vuex.Store({
 			for(var i = 0; i < l; i++) {
 				r = state.radiusArray[i];
 				r2 = state.radiusArray[i + 1];
-				//pointArray.push("M" + (Math.sin(0) * r) + "," + (Math.cos(0) * r) + " ");
 				for(var j = 0; j < l2; j++) {
 					sinSlice = Math.sin((sliceSize * j) + state.offsetRotation) * r;
 					cosSlice = Math.cos((sliceSize * j) + state.offsetRotation) * r;
-					pointArray.push((centerX + sinSlice) + "," + (centerY + cosSlice));
-					
+					if(j == 0) {
+						pointArray.push("M" + (centerX + sinSlice) + "," + (centerY + cosSlice));
+					} else {
+						pointArray.push("L" + (centerX + sinSlice) + "," + (centerY + cosSlice));
+					}
 					sinSlice = Math.sin(((sliceSize * j) + state.offsetRotation) + (sliceSize / 2)) * r2;
 					cosSlice = Math.cos(((sliceSize * j) + state.offsetRotation) + (sliceSize / 2)) * r2;
-					pointArray.push((centerX + sinSlice) + "," + (centerY + cosSlice));
+					pointArray.push("L" + (centerX + sinSlice) + "," + (centerY + cosSlice));
 				}
 			}
 			s += pointArray.join(" ");
-			 s += '" /></g></g></svg>'
-			 state.design = s;
+			s += '" /></g></g></svg>'
+			state.design = s;
 		},
 		setBackgroundColor: function(state, val) {
 			store.state.backgroundColor = val;
