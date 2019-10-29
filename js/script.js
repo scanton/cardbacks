@@ -28,7 +28,7 @@ const store = new Vuex.Store({
 		stageHeight: 600,
 		stageRadius: 10,
 		backgroundColor: '#FFFFFF',
-		foregroundColor: '#0000AE',
+		foregroundColor: '#0001C3',
 		totalPoints: 8,
 		offsetRotation: toRadians(180),
 		radiusArray: [155, 50, 100, 25, 125, 66],
@@ -48,7 +48,7 @@ const store = new Vuex.Store({
 			var s = `<?xml version="1.0" encoding="utf-8"?>
 			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" x="0px" y="0px" viewBox="0 0 ` + state.stageWidth + ` ` + state.stageHeight + `" enable-background="new 0 0 ` + state.stageWidth + ` ` + state.stageHeight + `" xml:space="preserve">
 			<g inkscape:groupmode="layer" inkscape:label="Layer 1">
-			<g><path fill="` + state.foregroundColor + '" d="';
+			<g><path stroke="white" fill="` + state.foregroundColor + '" d="';
 			var r, r2, sinSlice, cosSlice;
 			var pointArray = [];
 			var l = state.radiusArray.length - 1;
@@ -70,6 +70,11 @@ const store = new Vuex.Store({
 					sinSlice = Math.sin(((sliceSize * j) + state.offsetRotation) + (sliceSize / 2)) * r2;
 					cosSlice = Math.cos(((sliceSize * j) + state.offsetRotation) + (sliceSize / 2)) * r2;
 					pointArray.push("L" + (centerX + sinSlice) + "," + (centerY + cosSlice));
+					if(j == l2 - 1) {
+						sinSlice = Math.sin((sliceSize * 0) + state.offsetRotation) * r;
+						cosSlice = Math.cos((sliceSize * 0) + state.offsetRotation) * r;
+						pointArray.push("L" + (centerX + sinSlice) + "," + (centerY + cosSlice));
+					}
 				}
 			}
 			s += pointArray.join(" ");
