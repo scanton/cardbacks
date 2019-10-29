@@ -3,6 +3,7 @@
 	var s = `
 		<div class="` + componentName + ` text-center">
 			<div class="stage" :style="stageStyle">
+				<div class="background-design" v-html="design"></div>
 			</div>
 		</div>
 	`;
@@ -12,6 +13,9 @@
 			
 		},
 		computed: {
+			design: function() {
+				return store.state.design;
+			},
 			stageStyle: function() {
 				var style = 'background-color: ' + store.state.backgroundColor + '; width: ' + store.state.stageWidth + 'px; height: ' + store.state.stageHeight + 'px; border-radius: ' + store.state.stageRadius + 'px;';
 				return style;

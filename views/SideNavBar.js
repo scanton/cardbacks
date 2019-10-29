@@ -30,10 +30,8 @@
 				<div class="input-group-addon">
 					Points
 				</div>
-				<input type="range" min="2" max="200" v-model="totalPoints" />
+				<input type="range" min="3" max="20" v-model="totalPoints" />
 			</div>
-			<button @click="handleRandomize" class="btn btn-default pull-right">Randomize</button>
-			<button @click="handleSaveSeed" class="btn btn-default pull-right">Save Seed</button>
 			<button @click="handleSaveSvg" class="btn btn-default pull-right">Save SVG</button>
 		</div>
 	`;
@@ -90,15 +88,8 @@
 			return {}
 		},
 		methods: {
-			handleSaveSeed: function(e) {
-				console.log("save seed");
-			},
 			handleSaveSvg: function(e) {
 				console.log("save svg");
-			},
-			handleRandomize: function(e) {
-				e.preventDefault();
-				store.commit("randomizePointModel");
 			}
 		}
 	});
