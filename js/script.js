@@ -19,6 +19,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
 	state: {
+		defaultPath: 'flower-' + new Date().getTime() + '.svg',
 		modalDialogBody: '',
 		modalDialogButtons: [],
 		modalDialogTitle: '',
@@ -139,11 +140,14 @@ const store = new Vuex.Store({
 			state.design = s;
 		},
 		setBackgroundColor: function(state, val) {
-			store.state.backgroundColor = val;
+			state.backgroundColor = val;
+		},
+		setDefaultPath: function(state, val) {
+			state.defaultPath = val;
 		},
 		setForegroundColor: function(state, val) {
-			store.state.foregroundColor = val;
-			store.commit("renderDesign");
+			state.foregroundColor = val;
+			commit("renderDesign");
 		},
 		setOffsetRotation: function(state, val) {
 			state.offsetRotation = val;
@@ -155,7 +159,7 @@ const store = new Vuex.Store({
 			store.commit("renderDesign");
 		},
 		setStageHeight: function(state, val) {
-			store.state.stageHeight = val;
+			state.stageHeight = val;
 			store.commit("renderDesign");
 		},
 		setStageWidth: function(state, val) {
@@ -163,7 +167,7 @@ const store = new Vuex.Store({
 			store.commit("renderDesign");
 		},
 		setTotalPoints: function(state, val) {
-			store.state.totalPoints = val;
+			state.totalPoints = val;
 			store.commit("renderDesign");
 		},
 		showModalDialog: function(state, args) {

@@ -24,9 +24,20 @@
 		},
 		methods: {
 			handleSaveSvg: function(e) {
+				var path = dialog.showSaveDialog({ title: "Save Trixelation as SVG", defaultPath: store.state.defaultPath, filters: [{name: "SVG Vector Graphics", extensions: ['svg']}] });
+				if(path) {
+					path = path.split(".")[0] + ".svg";
+					store.commit("setDefaultPath", path);
+					fs.outputFile(path, store.state.design, function(err) {
+						if(err) {
+							console.error(err);
+						}
+					});
+				}
+				/*
 				store.commit("showModalDialog", {
 					title: "Save File As",
-					body: "<div>Pick a location to save an SVG file or copy the text below</div><div><textarea>" + store.state.design + "</textarea></div>",
+					body: "<div>Pick a location to save an SVG file or copy the text below:</div><div><textarea>" + store.state.design + "</textarea></div>",
 					buttons: [
 						{
 							label: "Cancel",
@@ -46,6 +57,7 @@
 						}
 					]
 				});
+				*/
 			},
 			handleToggleSidebar: function(e) {
 				e.preventDefault();
