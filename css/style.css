@@ -12,13 +12,19 @@ body {
 	right: 0;
 	bottom: 0;
 	z-index: 10;
-	background: rgba(0, 0, 0, .25);
+	background: rgba(255, 255, 255, .25);
 }
 .modal-dialog-view .dialog {
 	margin: 5em;
 	background: #333;
 	border-radius: 10px;
 	padding: 2em;
+}
+.modal-dialog-view .dialog textarea {
+	width: 100%;
+	min-height: 70px;
+	background: #333;
+	color: #CCC;
 }
 .modal-dialog-view button {
 	margin-left: 1em;
@@ -56,6 +62,9 @@ body {
 	overflow: scroll;
 	padding: 1em;
 	transition: .25s all ease-out;
+}
+.side-nav-bar button {
+	margin-top: .5em;
 }
 .main-viewport {
 	overflow: scroll;
