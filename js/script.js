@@ -34,6 +34,7 @@ const store = new Vuex.Store({
 		offsetRotation: 180,
 		dataKey: new Date().getTime(),
 		radiusArray: [ 95, 172, 56, 94, 75, 166, 30, 77, 105, 119, 122, 200, 141, 62, 194, 185, 127, 62 ],
+		radiusTargets: [ 95, 172, 56, 94, 75, 166, 30, 77, 105, 119, 122, 200, 141, 62, 194, 185, 127, 62 ],
 		//radiusArray: [ 95, 172, 56, 94, 75, 166, 30, 77, 105, 119, 122, 200 ],
 		//radiusArray: [ 121, 81, 110, 101, 50, 165, 198, 191, 3, 188, 189, 36 ],
 		//radiusArray: [ 33, 86, 81, 13, 189, 51, 17, 72, 55, 69, 32, 190 ],
@@ -81,7 +82,8 @@ const store = new Vuex.Store({
 		//radiusArray: [153, 42, 129, 145, 118, 157.5, 12.5, 180.5, 46.5, 165.5, 82.5, 192.5],
 		//radiusArray: [132, 186, 165, 119, 140, 161, 58, 109, 95, 10, 171, 123],
 		//radiusArray: [ 24, 50, 155, 168, 7, 59, 37, 143, 74, 163, 83, 42 ],
-		design: ''
+		design: '',
+		isAutoPlay: false
 	},
 	actions: {
 		
@@ -97,10 +99,10 @@ const store = new Vuex.Store({
 			var max = Math.min(state.stageWidth, state.stageHeight) / 2;
 			var l = state.radiusArray.length;
 			while(l--) {
-				state.radiusArray[l] = Math.round(Math.random() * max);
+				state.radiusTargets[l] = Math.round(Math.random() * max);
 			}
-			state.dataKey = new Date().getTime();
-			store.commit("renderDesign");
+			//state.dataKey = new Date().getTime();
+			//store.commit("renderDesign");
 		},
 		renderDesign: function(state) {
 			var s = `<?xml version="1.0" encoding="utf-8"?>
@@ -150,6 +152,9 @@ const store = new Vuex.Store({
 			state.foregroundColor = val;
 			store.commit("renderDesign");
 		},
+		setIsAutoPlay: function(state, val) {
+			state.isAutoPlay = val;
+		},
 		setOffsetRotation: function(state, val) {
 			state.offsetRotation = val;
 			store.commit("renderDesign");
@@ -196,3 +201,32 @@ const vm = new Vue({
 });
 
 store.commit("renderDesign");
+
+var tweenCount = 0;
+var tweenCounter = setInterval(function() {
+	var isMatch = true;
+	var l = store.state.radiusTargets.length;
+	while(l--) {
+		if(store.state.radiusTargets[l] != store.state.radiusArray[l]) {
+			isMatch = false;
+			break;
+		}
+	}
+	if(!isMatch) {
+		l = store.state.radiusTargets.length;
+		while(l--) {
+			store.state.radiusTargets[l]
+			store.state.radiusArray[l] -= (store.state.radiusArray[l] - store.state.radiusTargets[l]) / 20;
+		}
+		store.state.dataKey = new Date().getTime();
+		store.commit("renderDesign");
+	}
+	if(store.state.isAutoPlay) {
+		++tweenCount;
+	}
+	if(tweenCount > 300) {
+		store.commit("randomizeValues");
+		tweenCount = 0;
+	}
+
+}, 33);

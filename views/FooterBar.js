@@ -3,7 +3,7 @@
 	var s = `
 		<div class="` + componentName + `">
 			<div class="pull-right" :data-key="dataKey">
-				{{radiusArray}}
+				{{mapRound(radiusArray)}}
 			</div>
 		</div>
 	`;
@@ -26,7 +26,9 @@
 			return {}
 		},
 		methods: {
-
+			mapRound: function(arr) {
+				return arr.map(x => Math.round(x));
+			}
 		}
 	});
 })();
