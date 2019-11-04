@@ -148,7 +148,7 @@ const store = new Vuex.Store({
 		},
 		setForegroundColor: function(state, val) {
 			state.foregroundColor = val;
-			commit("renderDesign");
+			store.commit("renderDesign");
 		},
 		setOffsetRotation: function(state, val) {
 			state.offsetRotation = val;
