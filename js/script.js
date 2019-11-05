@@ -216,7 +216,7 @@ var tweenCounter = setInterval(function() {
 		l = store.state.radiusTargets.length;
 		while(l--) {
 			store.state.radiusTargets[l]
-			store.state.radiusArray[l] -= (store.state.radiusArray[l] - store.state.radiusTargets[l]) / 20;
+			store.state.radiusArray[l] -= (store.state.radiusArray[l] - store.state.radiusTargets[l]) / 50;
 		}
 		store.state.dataKey = new Date().getTime();
 		store.commit("renderDesign");
