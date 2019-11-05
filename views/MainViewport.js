@@ -21,7 +21,8 @@
 				return style;
 			},
 			stageStyle: function() {
-				var style = 'background-color: ' + store.state.backgroundColor + '; width: ' + store.state.stageWidth + 'px; height: ' + store.state.stageHeight + 'px; border-radius: ' + store.state.stageRadius + 'px;';
+				//background-color: ' + store.state.backgroundColor + '; 
+				var style = 'width: ' + store.state.stageWidth + 'px; height: ' + store.state.stageHeight + 'px; border-radius: ' + store.state.stageRadius + 'px;';
 				return style;
 			}
 		},

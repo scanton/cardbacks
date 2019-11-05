@@ -6,7 +6,7 @@
 				<div class="input-group-addon">
 					Width
 				</div>
-				<input type="range" min="50" max="800" v-model="stageWidth" />
+				<input type="range" min="50" max="2400" v-model="stageWidth" />
 				<div class="input-group-addon">
 					{{stageWidth}}
 				</div>
@@ -15,7 +15,7 @@
 				<div class="input-group-addon">
 					Height
 				</div>
-				<input type="range" min="50" max="800" v-model="stageHeight" />
+				<input type="range" min="50" max="2400" v-model="stageHeight" />
 				<div class="input-group-addon">
 					{{stageHeight}}
 				</div>

@@ -73,7 +73,9 @@ body {
 	left: 0;
 	right: 0;
 	bottom: 30px;
-	background: black;
+	 background: url(../images/winter-back.svg);
+	background-repeat: no-repeat;
+	background-size: cover; 
 	padding: 1em;
 	transition: .25s all ease-out;
 }
@@ -93,6 +95,8 @@ body {
 .main-viewport .stage {
 	display: inline-block;
 	/* border: 1px solid #999; */
+	mix-blend-mode: overlay;
+	text-shadow: 2px 2px;
 }
 .input-group.composite-selector {
     background: #eeeeee;
