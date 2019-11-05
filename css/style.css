@@ -92,7 +92,7 @@ body {
 }
 .main-viewport .stage {
 	display: inline-block;
-	border: 1px solid #999;
+	/* border: 1px solid #999; */
 }
 .input-group.composite-selector {
     background: #eeeeee;

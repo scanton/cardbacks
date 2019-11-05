@@ -25,12 +25,12 @@ const store = new Vuex.Store({
 		modalDialogTitle: '',
 		isModalDialogVisible: false,
 		isSideBarVisible: true,
-		stageWidth: 400,
-		stageHeight: 400,
+		stageWidth: 800,
+		stageHeight: 800,
 		stageRadius: 200,
-		backgroundColor: '#e0c498',
-		foregroundColor: '#800000',
-		totalPoints: 13,
+		backgroundColor: '#9595ff',
+		foregroundColor: '#ffffff',
+		totalPoints: 6,
 		offsetRotation: 180,
 		dataKey: new Date().getTime(),
 		radiusArray: [ 95, 172, 56, 94, 75, 166, 30, 77, 105, 119, 122, 200, 141, 62, 194, 185, 127, 62 ],
@@ -83,7 +83,7 @@ const store = new Vuex.Store({
 		//radiusArray: [132, 186, 165, 119, 140, 161, 58, 109, 95, 10, 171, 123],
 		//radiusArray: [ 24, 50, 155, 168, 7, 59, 37, 143, 74, 163, 83, 42 ],
 		design: '',
-		isAutoPlay: false
+		isAutoPlay: true
 	},
 	actions: {
 		
