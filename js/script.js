@@ -81,7 +81,8 @@ const store = new Vuex.Store({
 		//radiusArray: [153, 42, 129, 145, 118, 157.5, 12.5, 180.5, 46.5, 165.5, 82.5, 192.5],
 		//radiusArray: [132, 186, 165, 119, 140, 161, 58, 109, 95, 10, 171, 123],
 		//radiusArray: [ 24, 50, 155, 168, 7, 59, 37, 143, 74, 163, 83, 42 ],
-		design: ''
+		design: '',
+		tweenTargets: {}
 	},
 	actions: {
 		
