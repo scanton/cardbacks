@@ -202,7 +202,7 @@ const vm = new Vue({
 
 store.commit("renderDesign");
 
-var tweenCount = 0;
+var tweenCount = 275;
 var tweenCounter = setInterval(function() {
 	var isMatch = true;
 	var l = store.state.radiusTargets.length;
