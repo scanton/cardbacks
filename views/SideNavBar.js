@@ -6,7 +6,7 @@
 				<div class="input-group-addon">
 					Width
 				</div>
-				<input type="range" min="50" max="800" v-model="stageWidth" />
+				<input type="range" min="50" max="2400" v-model="stageWidth" />
 				<div class="input-group-addon">
 					{{stageWidth}}
 				</div>
@@ -15,7 +15,7 @@
 				<div class="input-group-addon">
 					Height
 				</div>
-				<input type="range" min="50" max="800" v-model="stageHeight" />
+				<input type="range" min="50" max="2400" v-model="stageHeight" />
 				<div class="input-group-addon">
 					{{stageHeight}}
 				</div>
@@ -62,12 +62,16 @@
 				</div>
 				<input @input="handleSliderChange" :data-index="index" :data-key="dataKey" :value="radius" type="range" min="0" :max="Math.floor(Math.min(stageWidth, stageHeight) / 2)" />
 				<div class="input-group-addon">
-					{{radius}}
+					{{Math.round(radius)}}
 				</div>
 			</div>
 			<div class="button-container">
 				<button @click="handleRandomize" class="btn btn-default pull-right">Randomize</button>
 				<div class="clear"></div>
+			</div>
+			<div class="input-group pull-right">
+				<span class="label">Auto Play</span>
+				<input type="checkbox" v-model="autoPlay" />
 			</div>
 		</div>
 	`;
@@ -77,6 +81,14 @@
 			
 		},
 		computed: {
+			autoPlay: {
+				get: function() {
+					return store.state.isAutoPlay;
+				},
+				set: function(val) {
+					store.commit("setIsAutoPlay", val);
+				}
+			},
 			backgroundColor: {
 				get: function() {
 					return store.state.backgroundColor;

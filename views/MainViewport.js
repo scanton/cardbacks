@@ -1,7 +1,7 @@
 (function() {
 	var componentName = 'main-viewport';
 	var s = `
-		<div class="` + componentName + ` text-center">
+		<div class="` + componentName + ` text-center" :style="portStyle">
 			<div class="stage" :style="stageStyle">
 				<div class="background-design" v-html="design"></div>
 			</div>
@@ -16,8 +16,13 @@
 			design: function() {
 				return store.state.design;
 			},
+			portStyle: function() {
+				var style = 'background-color: ' + store.state.backgroundColor + ';';
+				return style;
+			},
 			stageStyle: function() {
-				var style = 'background-color: ' + store.state.backgroundColor + '; width: ' + store.state.stageWidth + 'px; height: ' + store.state.stageHeight + 'px; border-radius: ' + store.state.stageRadius + 'px;';
+				//background-color: ' + store.state.backgroundColor + '; 
+				var style = 'width: ' + store.state.stageWidth + 'px; height: ' + store.state.stageHeight + 'px; border-radius: ' + store.state.stageRadius + 'px;';
 				return style;
 			}
 		},
